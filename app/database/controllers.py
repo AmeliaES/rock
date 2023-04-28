@@ -35,7 +35,8 @@ class Database:
     
     def get_ACT_average(self):
         """Return the average ACT cost"""
-        return round(db.session.query(func.avg(PrescribingData.ACT_cost).label('ACT_average')).first()[0], 2)        return round(db.session.query(func.avg(PrescribingData.ACT_cost).label('ACT_average')).first()[0], 2)
+        return round(db.session.query(func.avg(PrescribingData.ACT_cost).label('ACT_average')).first()[0], 2)
+
     def get_top_prescived(self):
         """Return the top prescrived medication"""
         return round(db.session.query(func.top())
