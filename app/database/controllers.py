@@ -43,4 +43,4 @@ class Database:
 
     def get_top_prescived(self):
         """Return the top prescrived medication"""
-        return round(db.session.query(func.top()))
+        return db.session.query(func.max(PrescribingData.items).label('top_item')).first()[0]
