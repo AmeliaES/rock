@@ -41,6 +41,6 @@ class Database:
         """Return the number of unique items in the dataset"""
         return db.session.query(func.distinct(PrescribingData.items).label('item_unique')).count()
 
-    def get_top_prescived(self):
+    def get_top_prescribed(self):
         """Return the top prescrived medication"""
         return db.session.query(func.max(PrescribingData.items).label('top_item')).first()[0]
