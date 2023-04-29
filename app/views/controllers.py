@@ -34,9 +34,10 @@ def home():
     bar_values = bar_data[0]
     bar_labels = bar_data[1]
     title_data_items = generate_data_for_tiles()
+    infection_data_items = generate_infection_data()
 
     # render the HTML page passing in relevant data
-    return render_template('dashboard/index.html', tile_data=title_data_items,
+    return render_template('dashboard/index.html', tile_data=title_data_items, infection_data=infection_data_items,
                            pct={'data': bar_values, 'labels': bar_labels},
                            pct_list=pcts, pct_data=selected_pct_data)
 
@@ -54,3 +55,6 @@ def generate_barchart_data():
     pct_codes = [r[0] for r in pct_codes]
     return [data_values, pct_codes]
 
+def generate_infection_data():
+    """Generates the data for the percentage of infection treatment used."""
+    return [db_mod.get_infection_percentage()]
