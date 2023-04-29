@@ -57,4 +57,8 @@ def generate_barchart_data():
 
 def generate_infection_data():
     """Generates the data for the percentage of infection treatment used."""
-    return [db_mod.get_infection_percentage()]
+    list = []
+    for code in ['01', '02', '03', '04', '05']:
+        output=db_mod.get_infection_percentage(code=code)
+        list.append(output)
+    return list

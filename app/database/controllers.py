@@ -45,10 +45,10 @@ class Database:
         """Return the number of unique items in the dataset"""
         return db.session.query(func.distinct(PrescribingData.BNF_name).label('item_unique')).count()
     
-    def get_infection_percentage(self):
+    def get_infection_percentage(self, code):
         """Return the infection treatment drug % of all infection treatments"""
         total = db.session.query(PrescribingData).filter(PrescribingData.BNF_code.like('05%')).count()
-        code_amount = db.session.query(PrescribingData).filter(PrescribingData.BNF_code.like('05' + '01' + '%')).count()
+        code_amount = db.session.query(PrescribingData).filter(PrescribingData.BNF_code.like('05' + code + '%')).count()
         percent = int(code_amount/total*100)
         return percent
     
