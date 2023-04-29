@@ -43,6 +43,6 @@ class Database:
         
     def get_unique_items(self):
         """Return the number of unique items in the dataset"""
-        return db.session.query(func.distinct(PrescribingData.items).label('item_unique')).count()
+        return db.session.query(func.distinct(PrescribingData.BNF_name).label('item_unique')).count()
 
 
