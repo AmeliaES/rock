@@ -36,11 +36,13 @@ class Database:
     def get_ACT_average(self):
         """Return the average ACT cost"""
         return round(db.session.query(func.avg(PrescribingData.ACT_cost).label('ACT_average')).first()[0], 2)
+
+    def get_top_prescribed(self):
+        """Return the top prescrived medication"""
+        return db.session.query(func.max(PrescribingData.items).label('top_item')).first()[0]
         
     def get_unique_items(self):
         """Return the number of unique items in the dataset"""
         return db.session.query(func.distinct(PrescribingData.items).label('item_unique')).count()
 
-    def get_top_prescribed(self):
-        """Return the top prescrived medication"""
-        return db.session.query(func.max(PrescribingData.items).label('top_item')).first()[0]
+
