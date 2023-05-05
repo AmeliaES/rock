@@ -36,3 +36,8 @@ This repo is created from the following template: https://github.com/IAM-lab/HIE
 def test_my_test_name(self):
     self.assertEqual ....
 ```
+
+## Git strategy - good practices
+* `git pull` before conducting work
+* Our working branch is the `dev` branch.
+* create a branch off the `dev` branch for `feature/`s or `bug/`s and merge these feature and bug branches into the `dev` branch (not the `master` branch).
